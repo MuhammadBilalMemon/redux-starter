@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
 
-import store from './store/store'
-import { bugAdded, bugResolved } from './actions';
+import configureStore from './store/configureStore'
+import { bugAdded, bugResolved } from './store/bugs';
 
 function App() {
 
-  // const unSubscribe = store.subscribe(() => {
-  //   console.log("Store Changed! ", store.getState())
-  // })
+  const store = configureStore();
+
+  const unSubscribe = store.subscribe(() => {
+    console.log("Store Changed! ", store.getState())
+  })
 
   store.dispatch(bugAdded("Bug 1"))
   store.dispatch(bugAdded("Bug 2"))
