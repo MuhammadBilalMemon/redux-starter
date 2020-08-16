@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import store from './store/store'
+import { bugAdded, bugResolved } from './actions';
+
 function App() {
+
+  // const unSubscribe = store.subscribe(() => {
+  //   console.log("Store Changed! ", store.getState())
+  // })
+
+  store.dispatch(bugAdded("Bug 1"))
+  store.dispatch(bugResolved(1))
+  // unSubscribe();
+
+  // store.dispatch({
+  //   type: actions.BUG_REMOVED,
+  //   payload: {
+  //     id: 1
+  //   }
+  // })
+  console.log(store.getState())
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello World</h1>
     </div>
   );
 }
