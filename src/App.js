@@ -3,10 +3,13 @@ import './App.css';
 
 import configureStore from './store/configureStore'
 import { bugAdded, bugResolved } from './store/bugs';
+import { projectAdded } from './store/projects';
 
 function App() {
 
   const store = configureStore();
+
+  store.dispatch(projectAdded({ name: "Project 1" }))
 
   store.dispatch(bugAdded({ description: "Bug 1" }))
   store.dispatch(bugAdded({ description: "Bug 2" }))
